@@ -2,7 +2,7 @@
 
 A completed experimental demo app for testing laravel from [https://laravel-news.com/your-first-laravel-application](https://laravel-news.com/your-first-laravel-application).
 
-Discusses database migrations with seeding, and phpunit testing. Displays the seeded links. Discusses an add item (title, url and description) method, but does not route it back to display (homescreen).
+Discusses database migrations with seeding, and phpunit testing. Displays the seeded links. Discusses an add item (title, url and description) method, but does not route it back to display (homescreen). Does not check for validation on `form` submit.
 
 ## Tools and Plugins
 
@@ -16,9 +16,10 @@ Discusses database migrations with seeding, and phpunit testing. Displays the se
 1. Clone this repository into your local directory.
 2. Navigate to the cloned directory from the command line. Run `Composer install`.
 3. Open `.env`. See `DB_DATABASE`. Create a `quickstart-demo` database in MySQL.
-4. Run `php artisan make:migration`
+4. Run `php artisan migrate`
 5. Run this project: `php serve artisan`. Open the resulting URL to a web browser.
-
+6. Go to *http://127.0.0.1:8000/submit* to enter a new `Link`
+ item.
 
 # Methods
 
