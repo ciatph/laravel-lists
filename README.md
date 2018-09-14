@@ -1,6 +1,8 @@
-# list
+# list of links
 
-An completed experimental demo app for testing laravel from [https://laravel-news.com/your-first-laravel-application](https://laravel-news.com/your-first-laravel-application).
+A completed experimental demo app for testing laravel from [https://laravel-news.com/your-first-laravel-application](https://laravel-news.com/your-first-laravel-application).
+
+Discusses database migrations with seeding, and phpunit testing. Displays the seeded links. Discusses an add item (title, url and description) method, but does not route it back to display (homescreen).
 
 ## Tools and Plugins
 
