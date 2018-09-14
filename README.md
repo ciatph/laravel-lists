@@ -1,6 +1,6 @@
 # list
 
-An experimental demo app for testing laravel from [https://laravel-news.com/your-first-laravel-application](https://laravel-news.com/your-first-laravel-application).
+An completed experimental demo app for testing laravel from [https://laravel-news.com/your-first-laravel-application](https://laravel-news.com/your-first-laravel-application).
 
 ## Tools and Plugins
 
@@ -9,11 +9,18 @@ An experimental demo app for testing laravel from [https://laravel-news.com/your
 2. VS Code for IDE
 3. [Laravel Blade Snippets](https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel-blade) as plugin for VS Code
 
+## Usage
+
+1. Clone this repository into your local directory.
+2. Navigate to the cloned directory from the command line. Run `Composer install`.
+3. Open `.env`. See `DB_DATABASE`. Create a `quickstart-demo` database in MySQL.
+4. Run `php artisan make:migration`
+5. Run this project: `php serve artisan`. Open the resulting URL to a web browser.
 
 
 # Methods
 
-## A. Model and Tables Initialization
+## A. Prepare your Development Environment
 
 1. Create a database that your laravel project will use in MySQL.
 
@@ -40,7 +47,10 @@ An experimental demo app for testing laravel from [https://laravel-news.com/your
 			Schema::defaultStringLength(191);
 		}
 
-7. **Create a migration:** build tables that your app will use. <br>
+
+## B. Model and Tables Initialization
+
+1. **Create a migration:** build tables that your app will use. <br>
 	`php artisan make:migration create_links_table --create=links`
 
 	This will create a 	`/database/migrations/{{datetime}}_create_links_table.php` file. Modify this to contain the columns which you will put in MySQL table `link`.
@@ -59,7 +69,7 @@ An experimental demo app for testing laravel from [https://laravel-news.com/your
 	NOTE: When working with test data, you can quickly apply the schema: <br>
 	`php artisan migrate:fresh`
 
-8. **Create a Model** (*Link* factory) to interface with data. <br>
+2. **Create a Model** (*Link* factory) to interface with data. <br>
 `php artisan make:model --factory Link`
 
 	This will create a new blank factory file at `/database/factories/LinkFactory.php` Edit this file to contain the following:
@@ -103,7 +113,7 @@ An experimental demo app for testing laravel from [https://laravel-news.com/your
 
 
 
-## B. Routing and Views
+## C. Routing and Views
 
 We can use a **route closure** or a *dedicated controller class*. Routing reads the URL and redirects the app to a specific page.
 
@@ -132,7 +142,7 @@ We can use a **route closure** or a *dedicated controller class*. Routing reads 
 `php artisan serve`
 
 
-## C. Displaying the Link Submission Form
+## D. Displaying the Link Submission Form
 
 1. Create a (stub, default) route for the submission form. Add in `/routes/web.php`.
 
@@ -250,7 +260,7 @@ We can use a **route closure** or a *dedicated controller class*. Routing reads 
 		$link->save();
 
 
-## D. Testing the Form Submission
+## E. Testing the Form Submission
 
 Perform integration tests against routes and middleware. Here we will write a few feature tests to verify our code works as expected without actually filling in the input fields in the submit form. We will test the `/submit` form throug HTTP requests to make sure that *route validation, saving and redirecting* are working as expected.
 
@@ -405,17 +415,17 @@ Test when POST fields exceed the `max:255` character length. Write the following
 			catch (ValidationExceptopm $e) {
 				$this->assertEquals(
 					'The title may not be greater than 255 characters',
-					$e->validator->errors()->first('title');
+					$e->validator->errors()->first('title')
 				);
 		
 				$this->assertEquals(
 					'The url may not be greater than 255 characters',
-					$e->validator->errors()->first('url');
+					$e->validator->errors()->first('url')
 				);
 		
 				$this->assertEquals(
 					'The description may not be greater than 255 characters',
-					$e->validator->errors()->first('description');
+					$e->validator->errors()->first('description')
 				);
 		
 				return;
